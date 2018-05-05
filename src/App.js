@@ -5,7 +5,7 @@ import web3 from './web3';
 import lottery from './lottery';
 
 class App extends Component {
-
+  // same as constructor(props) functionality
   state = {
     manager: '',
     players: [],
@@ -13,7 +13,7 @@ class App extends Component {
     value: '',
     message: ''
   };
-
+  
   async componentDidMount() { // the following methods are all coming from Lottery.sol
     const manager = await lottery.methods.manager().call(); 
     const players = await lottery.methods.getPlayers().call(); 
@@ -23,6 +23,7 @@ class App extends Component {
     
   }
 
+  // = and => to avoid this.bind() in render 
   onSubmit = async (event) => {
     event.preventDefault();
 
