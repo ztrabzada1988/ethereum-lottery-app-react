@@ -62,8 +62,8 @@ class App extends Component {
       <div>
 
         <AppBar position="static" style={{ backgroundColor: "#168cd4" }}>
-          <Toolbar>
-            <Typography variant="h6" color="inherit">
+          <Toolbar style={{ textAlign: 'center', margin: 'auto' }}>
+            <Typography variant="h6" color="inherit" >
               Ethereum Lottery App
             </Typography>
           </Toolbar>
@@ -72,7 +72,7 @@ class App extends Component {
         <div className="body-content">
           <h2>Lottery Contract</h2>
           <p>
-            This contract is managed by {this.state.manager}.
+            This contract is managed by wallet address <span style={{ fontWeight: 'bold', color: 'blue' }}>{this.state.manager}</span>.
             There are currently {this.state.players.length} people entered and
             competing to win {web3.utils.fromWei(this.state.balance, 'ether')} ethers!
           </p>
@@ -82,8 +82,9 @@ class App extends Component {
           <form onSubmit = {this.onSubmit}>
             <h4>Want to try your luck?</h4>
             <div>
-              <label>Amount of ether to enter</label>
+              <label>Amount of ether to enter: </label>
               <input
+                style={{ marginLeft: '10px', border: 'solid 1px', borderRadius: '3px', height: '19px', width: '200px' }}
                 value = {this.state.value}
                 onChange={event => this.setState({ value: event.target.value })}
               />
@@ -94,8 +95,9 @@ class App extends Component {
           <hr />
 
           <h4>Ready to pick a winner</h4>
-          <Button onClick={this.onClick}>Pick a winner!</Button>
+          <Button style={{ marginTop: '1px', marginBottom: '20px' }} onClick={this.onClick}>Pick a winner!</Button>
 
+          <p style={{ color: 'red' }}> NOTE: Please make sure you are logged into your Metamask account at Rinkbey Test Network and have Web3 installed or this app will not work</p>
           <hr />
 
           <h1>{this.state.message}</h1>
