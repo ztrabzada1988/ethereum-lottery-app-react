@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.body-content {
+  margin-left: 20px;
+}
+
+.body-content Button {
+  background-color: #42e3e4;
+}

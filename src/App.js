@@ -69,35 +69,37 @@ class App extends Component {
           </Toolbar>
         </AppBar>
 
-        <h2>Lottery Contract</h2>
-        <p>
-          This contract is managed by {this.state.manager}.
-          There are currently {this.state.players.length} people entered and
-          competing to win {web3.utils.fromWei(this.state.balance, 'ether')} ethers!
-        </p>
+        <div className="body-content">
+          <h2>Lottery Contract</h2>
+          <p>
+            This contract is managed by {this.state.manager}.
+            There are currently {this.state.players.length} people entered and
+            competing to win {web3.utils.fromWei(this.state.balance, 'ether')} ethers!
+          </p>
 
-        <hr />
+          <hr />
 
-        <form onSubmit = {this.onSubmit}>
-          <h4>Want to try your luck?</h4>
-          <div>
-            <label>Amount of ether to enter</label>
-            <input
-              value = {this.state.value}
-              onChange={event => this.setState({ value: event.target.value })}
-            />
-          </div>
-          <Button>Enter</Button>
-        </form>
+          <form onSubmit = {this.onSubmit}>
+            <h4>Want to try your luck?</h4>
+            <div>
+              <label>Amount of ether to enter</label>
+              <input
+                value = {this.state.value}
+                onChange={event => this.setState({ value: event.target.value })}
+              />
+            </div>
+            <Button>Enter</Button>
+          </form>
 
-        <hr />
+          <hr />
 
-        <h4>Ready to pick a winner</h4>
-        <Button onClick={this.onClick}>Pick a winner!</Button>
+          <h4>Ready to pick a winner</h4>
+          <Button onClick={this.onClick}>Pick a winner!</Button>
 
-        <hr />
+          <hr />
 
-        <h1>{this.state.message}</h1>
+          <h1>{this.state.message}</h1>
+        </div>
       </div>
     );
   }
