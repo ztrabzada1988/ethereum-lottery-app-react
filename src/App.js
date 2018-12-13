@@ -4,6 +4,12 @@ import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+
 class App extends Component {
   // same as constructor(props) functionality
   state = {
@@ -13,17 +19,17 @@ class App extends Component {
     value: '',
     message: ''
   };
-  
+
   async componentDidMount() { // the following methods are all coming from Lottery.sol
-    const manager = await lottery.methods.manager().call(); 
-    const players = await lottery.methods.getPlayers().call(); 
+    const manager = await lottery.methods.manager().call();
+    const players = await lottery.methods.getPlayers().call();
     const balance = await web3.eth.getBalance(lottery.options.address);
 
     this.setState({ manager, players, balance });
-    
+
   }
 
-  // = and => to avoid this.bind() in render 
+  // = and => to avoid this.bind() in render
   onSubmit = async (event) => {
     event.preventDefault();
 
@@ -54,6 +60,15 @@ class App extends Component {
   render() {
     return (
       <div>
+
+        <AppBar position="static" style={{ backgroundColor: "#168cd4" }}>
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              Ethereum Lottery App
+            </Typography>
+          </Toolbar>
+        </AppBar>
+
         <h2>Lottery Contract</h2>
         <p>
           This contract is managed by {this.state.manager}.
@@ -68,17 +83,17 @@ class App extends Component {
           <div>
             <label>Amount of ether to enter</label>
             <input
-              value = {this.state.value} 
+              value = {this.state.value}
               onChange={event => this.setState({ value: event.target.value })}
             />
           </div>
-          <button>Enter</button>
+          <Button>Enter</Button>
         </form>
 
         <hr />
 
         <h4>Ready to pick a winner</h4>
-        <button onClick={this.onClick}>Pick a winner!</button>
+        <Button onClick={this.onClick}>Pick a winner!</Button>
 
         <hr />
 
